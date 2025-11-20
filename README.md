@@ -30,14 +30,9 @@
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-alembic upgrade head
+alembic -c app/alembic.ini upgrade head
 uvicorn app.main:app --reload
 ```
-
-## Миграции
-
-- `alembic upgrade head` — применить миграции
-- `alembic revision --autogenerate -m "message"` — создать новую миграцию
 
 ## Тесты
 
@@ -47,12 +42,10 @@ pytest
 
 ## Эндпоинты
 
-Документация — http://localhost:8000/docs.
-
 - `POST /api/v1/incidents` — создать инцидент
 - `GET /api/v1/incidents` — получить список (поддерживается фильтр `?status=...`)
 - `GET /api/v1/incidents/{id}` — получить конкретный инцидент
 - `PATCH /api/v1/incidents/{id}/status` — обновить статус
 - `GET /health` — healthcheck
 
-Примеры тел запросов и ответов — в Swagger UI.
+Примеры тел запросов и ответов — в Swagger UI  — http://localhost/docs..
